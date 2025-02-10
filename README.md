@@ -87,6 +87,6 @@ El patrón [Nombre del Patrón] ha sido implementado utilizando las siguientes c
 ## Contribuciones
 Este proyecto fue desarrollado por:
 - [Nombre del Estudiante 1]
-- [Nombre del Estudiante 2]
+- Juan Andrés Gómez Pérez
 - [Nombre del Estudiante 3]
 
