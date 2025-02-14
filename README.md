@@ -1,42 +1,37 @@
-
-# Implementación del Patrón [Nombre del Patrón]
+# Implementación del Patrón Decorator
 
 ## Descripción del Patrón
-El patrón [Nombre del Patrón] es utilizado para [describir el propósito del patrón]. Este proyecto demuestra su implementación mediante un ejemplo práctico en **Java** utilizando **Maven** como gestor de dependencias.
+El patrón **Decorator** es utilizado para extender la funcionalidad de objetos de manera flexible sin modificar su estructura original. Este proyecto demuestra su implementación mediante un ejemplo práctico en **Node.js** utilizando **Express** como framework para la creación de un sistema de pedidos en una cafetería.
 
 ---
 
 ## Estructura del Proyecto
-La estructura del proyecto sigue el estándar de **Maven**:
+La estructura del proyecto sigue el estándar de **Node.js**:
 
 ```
 nombre-del-proyecto
 │
-├── pom.xml                # Archivo de configuración de Maven
+├── package.json           # Archivo de configuración de Node.js
 ├── README.md              # Documentación del proyecto
 └── src
-    ├── main
-    │   ├── java
-    │   │   └── [paquete base]    # Código fuente principal
-    │   └── resources             # Recursos adicionales
-    └── test
-        └── java                  # Pruebas unitarias
+    ├── productos
+    │   ├── productos.js    # Definición de productos base
+    │   ├── extras.js       # Implementación de decoradores
+    ├── cafeteria
+    │   ├── pedidos.js      # Lógica de pedidos
+    ├── server.js          # Servidor principal
 ```
 
 ---
 
 ## Dependencias Utilizadas
-Este proyecto utiliza las siguientes dependencias definidas en el archivo **pom.xml**:
-```xml
-<dependencies>
-    <!-- Dependencias estándar de Maven -->
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.13.2</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
+Este proyecto utiliza las siguientes dependencias definidas en el archivo **package.json**:
+```json
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
 ```
 
 ---
@@ -49,22 +44,33 @@ git clone https://github.com/usuario/nombre_repositorio.git
 cd nombre_repositorio
 ```
 
-2. **Compilar el proyecto:**
+2. **Instalar dependencias:**
 ```bash
-mvn clean compile
+npm install
 ```
 
 3. **Ejecutar el proyecto:**
 ```bash
-mvn exec:java -Dexec.mainClass="com.ejemplo.Main"
+node src/server.js
 ```
 
 ---
 
 ## Ejemplo de Ejecución
-Al ejecutar el programa, deberías ver la siguiente salida:
+Al realizar una petición POST a `/pedidos`, se debe enviar un cuerpo JSON similar a:
+```json
+{
+  "producto": "cafe",
+  "extras": ["grande", "chocolate"]
+}
 ```
-[Ejemplo de resultado del programa]
+
+El resultado esperado será:
+```
+{
+  "descripcion": "Café, grande, con chocolate",
+  "precio": "$7000"
+}
 ```
 
 ---
@@ -77,16 +83,18 @@ El siguiente diagrama muestra la estructura del patrón implementado:
 ---
 
 ## Explicación de la Implementación
-El patrón [Nombre del Patrón] ha sido implementado utilizando las siguientes clases principales:
-- **[Clase 1]**: Explicación del propósito de la clase.
-- **[Clase 2]**: Explicación del propósito de la clase.
-- **[Clase 3]**: Explicación del propósito de la clase.
+El patrón **Decorator** ha sido implementado utilizando las siguientes clases principales:
+- **Producto**: Clase base para productos.
+- **Cafe y Croissant**: Implementaciones concretas de productos.
+- **ProductoDecorator**: Clase base para decoradores.
+- **Extras (Grande, Chocolate, etc.)**: Decoradores que agregan funcionalidades adicionales.
+- **PedidosRouter**: Maneja las solicitudes HTTP para la realización de pedidos.
 
 ---
 
 ## Contribuciones
 Este proyecto fue desarrollado por:
-- [Nombre del Estudiante 1]
+- Rita trindade da Cruz
 - Juan Andrés Gómez Pérez
-- [Nombre del Estudiante 3]
+- Brandon Eduardo Merchan
 
