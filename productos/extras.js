@@ -1,18 +1,5 @@
-class ProductoDecorator {
-    constructor(producto) {
-        this.producto = producto;
-    }
+const { ProductoDecorator } = require('./decorador');
 
-    getDescripcion() {
-        return this.producto.getDescripcion();
-    }
-
-    getPrecio() {
-        return this.producto.getPrecio();
-    }
-}
-
-// Clases de los extras
 class Grande extends ProductoDecorator {
     getDescripcion() {
         return `${this.producto.getDescripcion()}, grande`;
@@ -73,4 +60,4 @@ class Chocolate extends ProductoDecorator {
     }
 }
 
-module.exports = { LecheDeslactosada, LecheAlmendras, Grande, Queso, Jamon, Chocolate };
+module.exports = { Grande, LecheDeslactosada, LecheAlmendras, Queso, Jamon, Chocolate };

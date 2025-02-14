@@ -1,3 +1,5 @@
+const { Producto } = require('./productos');
+
 class ProductoDecorator extends Producto {
     constructor(producto) {
         super();
@@ -12,3 +14,5 @@ class ProductoDecorator extends Producto {
         return this.producto.getPrecio();
     }
 }
+
+module.exports = { ProductoDecorator };

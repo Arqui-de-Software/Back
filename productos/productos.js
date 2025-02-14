@@ -29,4 +29,4 @@ class Croissant extends Producto {
     }
 }
 
-module.exports = {Producto, Cafe, Croissant};
+module.exports = { Producto, Cafe, Croissant };
