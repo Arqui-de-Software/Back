@@ -1,12 +1,6 @@
 const express = require('express');
-const Cafe = require('./models/Cafe')
-const Croissant = require('./models/Croissant')
-const Chocolate = require('./decorators/Chocolate')
-const Queso = require('./decorators/Queso')
-const Grande = require('./decorators/Grande')
-const LecheDeslactosada = require('./decorators/LecheDeslactosada')
-const LecheAlmendras = require('./decorators/LecheAlmendras')
-const Jamon = require('./decorators/Jamon')
+const { Cafe, Croissant } = require('../productos/productos');
+const { Leche, Azucar, Chocolate, Queso, Grande, LecheDeslactosada, LecheAlmendras, Jamon } = require('../productos/extras');
 
 const router = express.Router();
 

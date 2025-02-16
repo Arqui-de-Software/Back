@@ -6,20 +6,32 @@ El patrón **Decorator** es un patrón de diseño estructural utilizado para **a
 Este proyecto implementa el patrón **Decorator** en **JavaScript**, utilizando **Express.js** para gestionar pedidos en una cafetería. 
 
 ## 🏗️ Estructura del Proyecto
-La estructura del proyecto sigue una organización modular para mejorar la escalabilidad y mantenibilidad:
+La estructura del backend sigue una organización modular para mejorar la escalabilidad y mantenibilidad:
 
 ```
 Back/
 │
 ├── src/
 │   ├── cafeteria/
-│   │   ├── interfaces/        # Definición de interfaces como IProducto
-│   │   ├── models/            # Clases base de productos (Producto, Cafe, Croissant)
-│   │   ├── decorators/        # Implementaciones del Patrón Decorator (Chocolate, LecheDeslactosada, Grande, etc.)
-│   ├── routes/                # Definición de rutas API
-├── uml/                       # Carpeta con los diagramas UML
-├── README.md                  # Documentación del proyecto
-├── package.json               # Archivo de configuración de Node.js
+│   │   ├── interfaces/
+│   │   │   ├── IProducto.js        # Definición de la interfaz base para los productos
+│   │   ├── models/
+│   │   │   ├── Producto.js         # Clase base para productos
+│   │   │   ├── Cafe.js             # Implementación concreta de un café
+│   │   │   ├── Croissant.js        # Implementación concreta de un croissant
+│   │   ├── decorators/
+│   │   │   ├── ProductoDecorator.js   # Clase abstracta del decorador
+│   │   │   ├── Chocolate.js           # Decorador que añade chocolate
+│   │   │   ├── LecheDeslactosada.js   # Decorador para leche deslactosada
+│   │   │   ├── Grande.js              # Decorador para tamaño grande
+│   │   │   ├── Queso.js               # Decorador que añade queso
+│   │   │   ├── Jamon.js               # Decorador que añade jamón
+│   ├── routes/
+│   │   ├── Pedidos.js                 # Definición de rutas API para gestionar pedidos
+├── uml/                                # Carpeta con los diagramas UML
+│   ├── UML.png                         # Diagrama UML de la implementación
+├── README.md                           # Documentación del proyecto
+├── package.json                        # Archivo de configuración de Node.js
 ```
 
 ## 📦 Dependencias Utilizadas
@@ -55,14 +67,14 @@ Al realizar una petición `POST` al endpoint de pedidos con el siguiente JSON:
 ```json
 {
   "producto": "cafe",
-  "extras": ["lecheDeslactosada"]
+  "extras": ["chocolate", "lecheDeslactosada"]
 }
 ```
 La salida esperada es:
 ```json
 {
-  "descripcion": "Café, con leche deslactosada",
-  "precio": "$6000"
+  "descripcion": "Café, con chocolate, con leche deslactosada",
+  "precio": "$7000"
 }
 ```
 
@@ -78,14 +90,7 @@ El patrón **Decorator** ha sido implementado utilizando las siguientes clases p
 - **`Cafe` y `Croissant`**: Productos concretos que extienden de `Producto`.
 - **`ProductoDecorator`**: Decorador abstracto que envuelve a un `Producto` y delega sus métodos.
 - **Decoradores concretos (`Chocolate`, `LecheDeslactosada`, `Grande`, etc.)**: Modifican dinámicamente las características del producto base.
-- **`router.pedidos`**: Módulo que recibe solicitudes HTTP y aplica decoradores en tiempo de ejecución.
-
-## 🎨 Frontend del Proyecto
-El frontend de la aplicación está desarrollado con **React**, proporcionando una interfaz de usuario interactiva y dinámica para la gestión de pedidos en la cafetería. Permite personalizar productos en tiempo real de manera intuitiva. 
-
-El código fuente del frontend está disponible en el siguiente repositorio:
-
-🔗 [Frontend Repository](https://github.com/Arqui-de-Software/Front.git)
+- **`routes.pedidos`**: Módulo que recibe solicitudes HTTP y aplica decoradores en tiempo de ejecución.
 
 ## 🤝 Contribuciones
 Este proyecto fue desarrollado por:
