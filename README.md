@@ -1,31 +1,28 @@
 # Implementación del Patrón Decorator
 
 ## Descripción del Patrón
-El patrón **Decorator** es utilizado para extender la funcionalidad de objetos de manera flexible sin modificar su estructura original. Este proyecto demuestra su implementación mediante un ejemplo práctico en **Node.js** utilizando **Express** como framework para la creación de un sistema de pedidos en una cafetería.
-
----
+El patrón **Decorator** es utilizado para **añadir funcionalidad a objetos de manera dinámica sin modificar su estructura base**. Este proyecto demuestra su implementación mediante un ejemplo práctico en **JavaScript** utilizando **Express.js** para la gestión de pedidos en una cafetería.
 
 ## Estructura del Proyecto
-La estructura del proyecto sigue el estándar de **Node.js**:
+La estructura del proyecto sigue una organización modular:
 
 ```
-nombre-del-proyecto
+nombre-del-proyecto/
 │
-├── package.json           # Archivo de configuración de Node.js
-├── README.md              # Documentación del proyecto
-└── src
-    ├── productos
-    │   ├── productos.js    # Definición de productos base
-    │   ├── extras.js       # Implementación de decoradores
-    ├── cafeteria
-    │   ├── pedidos.js      # Lógica de pedidos
-    ├── server.js          # Servidor principal
+├── src/
+│   ├── cafeteria/
+│   │   ├── interfaces/        # Definición de interfaces como IProducto
+│   │   ├── models/            # Clases base de productos (Producto, Cafe, Croissant)
+│   │   ├── decorators/        # Implementaciones del Patrón Decorator (Chocolate, LecheDeslactosada, Grande, etc.)
+│   ├── pedidos/               # Definición de rutas API
+├── uml/                       # Carpeta con los diagramas UML
+├── README.md                  # Documentación del proyecto
+├── package.json               # Archivo de configuración de Node.js
 ```
-
----
 
 ## Dependencias Utilizadas
-Este proyecto utiliza las siguientes dependencias definidas en el archivo **package.json**:
+Este proyecto utiliza las siguientes dependencias definidas en `package.json`:
+
 ```json
 {
   "dependencies": {
@@ -34,63 +31,58 @@ Este proyecto utiliza las siguientes dependencias definidas en el archivo **pack
 }
 ```
 
----
-
 ## Instrucciones de Instalación
-
 1. **Clonar el repositorio:**
-```bash
-git clone https://github.com/usuario/nombre_repositorio.git
-cd nombre_repositorio
-```
+   ```sh
+   git clone https://github.com/Arqui-de-Software/Back.git
+   cd Back
+   ```
 
 2. **Instalar dependencias:**
-```bash
-npm install
-```
+   ```sh
+   npm install
+   ```
 
 3. **Ejecutar el proyecto:**
-```bash
-node src/server.js
-```
-
----
+   ```sh
+   node src/server.js
+   ```
 
 ## Ejemplo de Ejecución
-Al realizar una petición POST a `/pedidos`, se debe enviar un cuerpo JSON similar a:
+Al realizar una petición `POST` al endpoint de pedidos con el siguiente JSON:
 ```json
 {
   "producto": "cafe",
-  "extras": ["grande", "chocolate"]
+  "extras": ["chocolate", "lecheDeslactosada"]
 }
 ```
-
-El resultado esperado será:
-```
+La salida esperada es:
+```json
 {
-  "descripcion": "Café, grande, con chocolate",
+  "descripcion": "Café, con chocolate, con leche deslactosada",
   "precio": "$7000"
 }
 ```
 
----
-
 ## Diagrama UML
-El siguiente diagrama muestra la estructura del patrón implementado:
-
-![Diagrama UML](uml/diagrama.png)
-
----
+El siguiente diagrama muestra la estructura del Patrón Decorator implementado:
+![Diagrama UML](uml/UML.png)
 
 ## Explicación de la Implementación
 El patrón **Decorator** ha sido implementado utilizando las siguientes clases principales:
-- **Producto**: Clase base para productos.
-- **Cafe y Croissant**: Implementaciones concretas de productos.
-- **ProductoDecorator**: Clase base para decoradores.
-- **Extras (Grande, Chocolate, etc.)**: Decoradores que agregan funcionalidades adicionales.
-- **PedidosRouter**: Maneja las solicitudes HTTP para la realización de pedidos.
 
----
+- **`IProducto`**: Define la interfaz común para todos los productos.
+- **`Producto`**: Clase base que representa un producto genérico.
+- **`Cafe` y `Croissant`**: Productos concretos que extienden de `Producto`.
+- **`ProductoDecorator`**: Decorador abstracto que envuelve a un `Producto` y delega sus métodos.
+- **Decoradores concretos (`Chocolate`, `LecheDeslactosada`, `Grande`, etc.)**: Modifican dinámicamente las características del producto base.
+- **`router.pedidos`**: Módulo que recibe solicitudes HTTP y aplica decoradores en tiempo de ejecución.
+
+## Frontend del Proyecto
+El frontend de la aplicación está desarrollado con **React**, permitiendo una interfaz dinámica e interactiva para la gestión de pedidos en la cafetería. El código fuente del frontend está disponible en el siguiente repositorio:
+
+[Frontend Repository](https://github.com/Arqui-de-Software/Front.git)
+
 
 ## Contribuciones
 Este proyecto fue desarrollado por:
