@@ -8,3 +8,5 @@ class IProducto {
         throw new Error("Este método debe ser implementado");
     }
 }
+
+module.exports = IProducto;

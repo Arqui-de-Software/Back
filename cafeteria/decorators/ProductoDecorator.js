@@ -1,4 +1,6 @@
 // Decorador abstracto
+const IProducto = require('../interfaces/IProduct');
+
 class ProductoDecorator extends IProducto {
     constructor(producto) {
         super();
@@ -13,3 +15,5 @@ class ProductoDecorator extends IProducto {
         return this.producto.getPrecio();
     }
 }
+
+module.exports = ProductoDecorator;

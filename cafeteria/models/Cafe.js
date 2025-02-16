@@ -1,4 +1,5 @@
 // Productos concretos
+const Producto = require('./Producto');
 class Cafe extends Producto {
     constructor() {
         super();
@@ -6,3 +7,5 @@ class Cafe extends Producto {
         this.precio = 5000;
     }
 }
+
+module.exports = Cafe;

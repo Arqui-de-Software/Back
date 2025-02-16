@@ -1,3 +1,5 @@
+const ProductoDecorator = require('./ProductoDecorator');
+
 class LecheAlmendras extends ProductoDecorator {
     getDescripcion() {
         return `${this.producto.getDescripcion()}, con leche de almendras`;
@@ -7,3 +9,5 @@ class LecheAlmendras extends ProductoDecorator {
         return this.producto.getPrecio() + 1500;
     }
 }
+
+module.exports = LecheAlmendras;

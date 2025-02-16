@@ -1,4 +1,5 @@
 // Clase base Producto
+const IProducto = require('../interfaces/IProduct');
 class Producto extends IProducto {
     constructor() {
         super();
@@ -14,3 +15,5 @@ class Producto extends IProducto {
         return this.precio;
     }
 }
+
+module.exports = Producto;

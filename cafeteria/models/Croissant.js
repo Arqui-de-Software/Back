@@ -1,3 +1,5 @@
+const Producto = require('./Producto');
+
 class Croissant extends Producto {
     constructor() {
         super();
@@ -5,3 +7,6 @@ class Croissant extends Producto {
         this.precio = 6000;
     }
 }
+
+
+module.exports = Croissant;
